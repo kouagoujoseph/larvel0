@@ -6,6 +6,8 @@
             <tr>
                 <td>ID</td>
                 <td>Nom</td>
+                <td>Marque voiture</td>
+                <td>numéro Matricule</td>
                 <td>EstDisponible</td>
                 <td>prix</td>
                 <td>Etat</td>
@@ -22,6 +24,8 @@
             <tr>
                 <td>{{ $item->id}} </td>
                 <td>{{ $item->Nom_voiture}} </td>
+                <td>{{ $item->marque_voiture}} </td>
+                <td>{{ $item->numero_matricule}} </td>
                 <td>{{ $item->EstDisponible}} </td>
                 <td>{{ $item->prix}} </td>
                 <td>{{ $item->etat}} </td>

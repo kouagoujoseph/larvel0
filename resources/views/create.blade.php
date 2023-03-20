@@ -15,6 +15,19 @@
                     <input class="form-control required" type="text" name="Nom_voiture" id="example-text-input ">
                 </div>
             </div>
+            
+            <div class="mb-4 row">
+                <label for="example-text-input" class="col-md-2 col-form-label">marque_voitre</label>
+                <div class="col-md-10">
+                    <input class="form-control required" type="text" name="marque_voiture" id="example-text-input ">
+                </div>
+            </div>
+            <div class="mb-4 row">
+                <label for="example-text-input" class="col-md-2 col-form-label">numéro_matricule</label>
+                <div class="col-md-10">
+                    <input class="form-control required" type="text" name="numero_matricule" id="example-text-input ">
+                </div>
+            </div>
 
             <div class="mb-3 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">EstDisponible</label>

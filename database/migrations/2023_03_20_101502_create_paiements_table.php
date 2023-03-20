@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('manage_cars', function (Blueprint $table) {
-            $table->binary('image')->nullable();
+        Schema::create('paiements', function (Blueprint $table) {
+            $table->id();
+            $table->float('montant');
+            $table->string('méthode_paiement');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('manage_cars', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::dropIfExists('paiements');
     }
 };

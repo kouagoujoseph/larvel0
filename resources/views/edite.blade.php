@@ -12,15 +12,29 @@
             <div class="mb-4 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">Nom_voiture</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" name="Nom_article" id="example-text-input"
+                    <input class="form-control" type="text" name="Nom_voiture" id="example-text-input"
                         value="{{ $offre->Nom_voiture}}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="example-text-input" class="col-md-2 col-form-label">Marque_voiture</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="marque_voiture" id="example-text-input"
+                        value="{{ $offre->marque_voiture }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="example-text-input" class="col-md-2 col-form-label">Numéro_matricule</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="numero_matricule" id="example-text-input"
+                        value="{{ $offre->numero_matricule }}">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">EstDisponible</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" name="prix" id="example-text-input"
+                    <input class="form-control" type="text" name="EstDisponible" id="example-text-input"
                         value="{{ $offre->EstDisponible }}">
                 </div>
             </div>
@@ -28,7 +42,7 @@
             <div class="mb-3 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">prix</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" name="Etat_article" id="example-text-input"
+                    <input class="form-control" type="text" name="prix" id="example-text-input"
                         value="{{ $offre->prix}}">
                 </div>
             </div>
@@ -36,7 +50,7 @@
             <div class="mb-3 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">Etat</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" name="Heur_arrivee_article" id="example-text-input"
+                    <input class="form-control" type="text" name="etat" id="example-text-input"
                         value="{{ $offre->etat}} ">
                 </div>
             </div>
@@ -44,7 +58,7 @@
             <div class="mb-3 row">
                 <label for="example-text-input" class="col-md-2 col-form-label">image</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="file" name="Lieu_fabrique" id="example-text-input"
+                    <input class="form-control" type="file" name="image" id="example-text-input"
                         value="{{ $offre->image}}">
                 </div>
             </div>

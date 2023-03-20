@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Manage_car;
+use App\Models\Voiture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -13,12 +13,12 @@ class ManageCarController extends Controller
      */
     public function index()
     {
-        $info=Manage_car::all();
+        $info=Voiture::all();
         return view('gestion', compact('info'));
     }
     public function accueil()
     {
-        $infos=Manage_car::all();
+        $infos=Voiture::all();
         return view('index', compact('infos'));
     }
 
@@ -28,12 +28,7 @@ class ManageCarController extends Controller
      */
     public function create()
     {
-        
-
-        
-            return view('create');
-         
-       
+               return view('create');     
     }
 
     /**
@@ -46,18 +41,20 @@ class ManageCarController extends Controller
                // $image = $request->file('image')->get();
                // $imagePath = $request->file('image')->store('public/images');
                // $imageName = basename($imagePath);
-                $model = new Manage_car();
+                $model = new Voiture();
               //  $model->image = $image;
                 $image = $request->file('image');
                 $path = Storage::disk('public')->put('images', $image);
                 $model->image = $image->getClientOriginalName();
                 $model->image = $path;
-
                 $model->Nom_voiture = $request->Nom_voiture ;
+                $model->marque_voiture = $request->marque_voiture;
+                $model->numero_matricule = $request->numero_matricule;
                 $model->EstDisponible = $request->EstDisponible ;
                 $model->prix = $request->prix;
                 $model->etat = $request->etat;
                 $model->save();
+              
             
           /*  $store=request()->validate([
                 'Nom_voiture'=>'required',
@@ -66,9 +63,9 @@ class ManageCarController extends Controller
                 'etat'=>'required',
                 ]);
     
-                Manage_car::create($store);*/
+                Voiture::create($store);*/
     
-                return redirect()->route('location.index');
+              return redirect()->route('location.index');
          
        
     }
@@ -79,7 +76,7 @@ class ManageCarController extends Controller
     public function show($id)
     {
          
-        $voiture = Manage_car::find($id);
+        $voiture = Voiture::find($id);
      //   return response(Storage::disk('public')->get($voiture->image))
        //->header('Content-Type', 'image/jpeg');
         return view('show',compact('voiture'));
@@ -92,12 +89,10 @@ class ManageCarController extends Controller
      */
     public function edit($id)
     {
-        
-
-            
+          
 
            
-                $offre=Manage_car::findorfail($id);
+                $offre=Voiture::findorfail($id);
                 return view('edite', compact('offre'));
            
     }
@@ -107,11 +102,18 @@ class ManageCarController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-            dd('hoooooooooooooooooooooooo');
-           
-
-        
+        $cru=Voiture::findorfail($id);
+        $cru->update([
+        'Nom_voiture'=>$request->Nom_voiture,
+        'marque_voiture'=>$request->marque_voiture,
+        'numero_matricule'=>$request->numero_matricule,
+        'EstDisponible'=>$request->EstDisponible,
+        'prix'=>$request->prix,
+        'etat'=>$request->etat,
+        'image'=>$request->image,
+       ]);
+       return redirect()->route('location.index');
+               
     }
 
     /**
@@ -119,7 +121,30 @@ class ManageCarController extends Controller
      */
     public function destroy($id)
     {
-        Manage_car::destroy($id);
+        Voiture::destroy($id);
        return redirect()->back();
     }
+
+
+    public function voiture_louée()
+    {
+               return view('voiture_louée');     
+    }
+
+    
+    public function louer()
+    {
+               return view('louer_voiture');     
+    }
+
+    public function rendre()
+    {
+               return view('rendre_voiture');     
+    }
+
+    public function contacter()
+    {
+               return view('contact');     
+    }
+
 }
