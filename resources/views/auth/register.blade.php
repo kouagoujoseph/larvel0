@@ -17,13 +17,24 @@
                     <x-input id="name" class="block mt-1 w-full form-control" type="text" name="name" :value="old('name')" required
                         autofocus autocomplete="name" />
                 </div>
-
+                
+                <div class="mt-4">
+                    <x-label for="prenom" class="text-black h2 col-md-2 col-form-label" value="{{__('prenom')}}" />
+                    <x-input id="prenom" class="block mt-1 w-full form-control" type="text" name="prenom" :value="old('prenom')"
+                        required autocomplete="username" />
+                </div>
+                <div class="mt-4">
+                    <x-label for="email" class="text-black h2 col-md-2 col-form-label" value="{{__('telephone')}}" />
+                    <x-input id="email" class="block mt-1 w-full form-control" type="text" name="telephone" :value="old('telephone')"
+                        required autocomplete="username" />
+                </div>
                 <div class="mt-4">
                     <x-label for="email" class="text-black h2 col-md-2 col-form-label" value="{{ __('Email') }}" />
                     <x-input id="email" class="block mt-1 w-full form-control" type="email" name="email" :value="old('email')"
                         required autocomplete="username" />
                 </div>
-
+               
+               
                 <div class="mt-4">
                     <x-label for="password" class="text-black h2 col-md-2 col-form-label" value="{{ __('Password') }}" />
                     <x-input id="password" class="block mt-1 w-full form-control" type="password" name="password" required

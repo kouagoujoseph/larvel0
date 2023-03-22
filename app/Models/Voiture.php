@@ -9,4 +9,12 @@ class Voiture extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function tarification(){
+        return $this->hasMany(Tarification::class);
+
+    }
+    public function location(){
+        return $this->belongsToMany(Location::class,'voiture_location','voiture_id','location_id');
+
+    }
 }

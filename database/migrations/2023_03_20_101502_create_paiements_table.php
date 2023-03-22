@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->float('montant');
             $table->string('méthode_paiement');
+            $table->foreignId('user_id');
+            $table->foreignId('location_id');
             $table->timestamps();
         });
     }

@@ -31,13 +31,19 @@
                 <td>{{ $item->etat}} </td>
                 <td><img src="/votre-route/"></td>
                 <td>
+                    @can("admin")
                     <form action="{{ route('location.destroy', $item) }}" method="POST"
-                        onsubmit=" return confirm('Voulez-vous vraiment supprimer?');">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <button class="btn btn-danger" title="Supprimer"><i class="bx bx-trash"></i></button>
-                    </form>
-                    </a>
+                    onsubmit=" return confirm('Voulez-vous vraiment supprimer?');">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}   
+                    <button class="btn btn-danger" title="Supprimer"><i class="bx bx-trash"></i></button>
+                </form> 
+                    @endcan
+                    @cannot("admin")
+                    <button class="btn btn-danger" title="Supprimer">pas autorisé</button>
+                    @endcannot
+                    
+                   
                 </td>
                 <td>
                     <a href="{{ route('location.edit', $item) }}" class="btn btn-primary" title="Editer"> <i class=" bx
@@ -67,7 +73,7 @@
     <a href="{{ route('location.create') }}" class="btn btn-primary waves-effect waves-light offset-5 text-white"> <i class="bx bx-add-to-queue"></i> Ajouter une nouvelle voiture
   </a>
   <br><br>
-  <a href="/" class="col-2">
+  <a href="/home_dashbord" class="col-2">
     <button class="btn btn-primary"><i class="bx bxs-left-arrow"></i> Page précédente</button>
 </a>
   </div> 

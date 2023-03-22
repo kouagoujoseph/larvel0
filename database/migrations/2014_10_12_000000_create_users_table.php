@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('prenom');
-            $table->string('sexe');
-            $table->float('nomero');
+            $table->bigInteger('telephone');
+            $table->string('isAdmin')->default('false');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

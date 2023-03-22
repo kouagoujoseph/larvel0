@@ -1,5 +1,6 @@
 @extends('layout_voiture.master')
 @section('content')
+@can("admin")
 <form action="{{ route('location.store')}}" method="POST" class="col-8 offset-2  bg-white"
     enctype="multipart/form-data">
     <fieldset>
@@ -60,6 +61,11 @@
         </div>
     </fieldset>
 </form>
+
+@endcan
+@cannot("admin")
+<div class="text-center bg-danger h2 offset-4 col-4">Vous n'etes pas administrateur. Vous ne pouvez pas effectuer cette fonction</div>
+@endcannot
 <form action="{{ route('location.index') }}" class="">
     <button class="btn btn-primary"><i class="bx bxs-left-arrow"></i> Page précédente</button>
 </form>

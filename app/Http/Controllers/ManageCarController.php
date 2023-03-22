@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Voiture;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -26,9 +27,11 @@ class ManageCarController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    
+    
     public function create()
-    {
-               return view('create');     
+    {                     
+        return view('create');                                     
     }
 
     /**
@@ -89,12 +92,10 @@ class ManageCarController extends Controller
      */
     public function edit($id)
     {
-          
-
-           
+       
                 $offre=Voiture::findorfail($id);
                 return view('edite', compact('offre'));
-           
+         
     }
 
     /**
@@ -120,9 +121,15 @@ class ManageCarController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    {
-        Voiture::destroy($id);
-       return redirect()->back();
+    { 
+        
+        
+        
+            Voiture::destroy($id);
+            return redirect()->back();
+
+      
+                
     }
 
 
@@ -134,7 +141,8 @@ class ManageCarController extends Controller
     
     public function louer()
     {
-               return view('louer_voiture');     
+        $infos=Voiture::all();
+               return view('louer_voiture', compact('infos'));     
     }
 
     public function rendre()
@@ -147,4 +155,20 @@ class ManageCarController extends Controller
                return view('contact');     
     }
 
+    public function logout(Request $request)
+    {
+       //methode qui gere la deconnexion 
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('home_dashbord');
+    }
+
+    public function default()
+    {
+               return view('location_par_defaut');     
+    }
 }

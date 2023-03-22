@@ -21,7 +21,7 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link text-black active text-uppercase " aria-current="page"
-                                        href="/"><strong><i class="bx bx-home-circle"></i> Accueil</strong></a>
+                                        href="/home_dashbord"><strong><i class="bx bx-home-circle"></i> Accueil</strong></a>
                                 </li>
                                 <li class="nav-item "><a class="nav-link text-black text-uppercase"
                                         href="/location"><strong><i class="bx bxs-badge"></i>
@@ -33,7 +33,7 @@
                                 </li>
 
                                 <li class="nav-item ">
-                                    <a class="nav-link text-black text-uppercase" href="{{ route('louer_voiture') }}"><strong><i
+                                    <a class="nav-link text-black text-uppercase" href="/home_dashbord"><strong><i
                                                 class="bx bx-taxi"></i> louer-voiture</strong></a>
                                 </li>
                                 <li class="nav-item ">
@@ -46,8 +46,27 @@
                                 </li>
                                 @if (Route::has('login'))
                                 @auth
-                                <a href="{{ url('/home') }}"
-                                    class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                                
+                                    <div class="dropdown d-inline-block">
+                                        <button type="button" class="btn header-item waves-effect bg-white" id="page-header-user-dropdown"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Se deconnecter
+                                            <span class="d-none d-xl-inline-block ms-1" key="t-henry"></span>
+                                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <!-- item-->
+                                            <a class="dropdown-item" href="{{ route('profile.show') }}"><i
+                                                    class="bx bx-user font-size-16 align-middle me-1"></i> <span
+                                                    key="t-profile">Profile</span></a>
+                    
+                                            <div class="dropdown-divider"></div>
+                    
+                                            <a class="dropdown-item text-danger" href="{{ route('deconnexion') }}"><i
+                                                    class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
+                                                    key="t-logout">Logout</span></a>
+                                        </div>
+                                    </div>
                                 @else
                                 <div class="d-flex align-items-center ">
                                     <li class="nav-item me-3">
@@ -64,7 +83,6 @@
                                 </li>
                                 @endif
                                 @endauth
-
                                 @endif
 
                             </ul>
@@ -98,7 +116,7 @@
                             </div>
                             <div class="offcanvas-body w-100 p-0 m-0">
                                 <ul class="p-0 m-0">
-                                    <li class="nav-item"><a class="nav-link " href="/">Accueil</a></li>
+                                    <li class="nav-item"><a class="nav-link " href="home_dashbord">Accueil</a></li>
                                     <li class="nav-item"><a class="nav-link " href="/location">Gestion-voiture</a></li>
                                     <li class="nav-item"><a class="nav-link " href="{{ route('voitures_louées') }}">Voitures louées</a>
                                     </li>

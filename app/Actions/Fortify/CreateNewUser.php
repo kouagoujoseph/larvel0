@@ -20,6 +20,8 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
+            'prenom'=> ['required', 'string','max:20'],
+            'telephone'=> ['required', 'string','max:20'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
@@ -28,6 +30,8 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input['name'],
+            'prenom' => $input['prenom'],
+            'telephone' => $input['telephone'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);

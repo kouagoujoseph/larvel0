@@ -2,48 +2,48 @@
 @section('content')
     <div class="main-container">
         <div class="h1 text-center">Voulez vous louer une voiture?</div>
-
-        <div class="row">
-            {{-- 
-                 @if($infos->count()>0)
-                @foreach ($infos as $item)
-                    <div class="col-xl-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="product-img position-relative">
-                                    <div class="avatar-sm product-ribbon">
-                                        <span class="avatar-title rounded-circle  bg-primary">
-                                            - 25 %
-                                        </span>
-                                    </div>
-                                    <img src="{{ $item->image }}" alt=""
-                                        class="img-fluid mx-auto d-block">
-                                </div>
-                                <div class="mt-4 text-center">
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">
-                                            Nouvelle voiture ajoutée </a></h5>
-
-                                    <p class="text-muted">
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                    </p>
-                                    <form action="">
-                                        <button class="btn btn-primary">voir detail</button>
-                                        <button class="btn btn-primary">louer-voiture</button>
-                                    </form>
-
-                                </div>
+        @if($infos->count()>0)
+        @foreach ($infos as $item)
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="product-img position-relative">
+                            <div class="avatar-sm product-ribbon">
+                                <span class="avatar-title rounded-circle  bg-primary">
+                                    - 25 %
+                                </span>
                             </div>
+                            <img src="{{ $item->image }}" alt=""
+                                class="img-fluid mx-auto d-block">
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">
+                                    Nouvelle voiture ajoutée </a></h5>
+
+                            <p class="text-muted">
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                            </p>
+                            <form action="">
+                                <button class="btn btn-primary">voir detail</button>
+                                <button class="btn btn-primary">louer-voiture</button>
+                            </form>
+
                         </div>
                     </div>
-                @endforeach
-            @endif
-                 --}}
+                </div>
+            </div>
+        @endforeach
+       @endif
+       {{-- 
+         <div class="row">
+            
+                  
 
-            <div class="col-xl-4 col-sm-6">
+             <div class="col-xl-4 col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="product-img position-relative">
@@ -230,10 +230,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+       
     </div>
     <br><br>
-    <form action="/" class="">
+    <form action="{{ route('location.index') }}" class="">
         <button class="btn btn-primary"><i class="bx bxs-left-arrow"></i> Page précédente</button>
     </form>
 @endsection
