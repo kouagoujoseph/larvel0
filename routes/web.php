@@ -13,8 +13,9 @@ use App\Http\Controllers\ManageCarController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('/location','App\Http\Controllers\ManageCarController');
+Route::get('/','App\Http\Controllers\ManageCarController@accueil');
 Route::get('/home_dashbord','App\Http\Controllers\ManageCarController@accueil');
+Route::resource('/location','App\Http\Controllers\ManageCarController');
 Route::get('/liste_voiture_louée','App\Http\Controllers\ManageCarController@voiture_louée')->name('voitures_louées');
 Route::get('/location_voiture','App\Http\Controllers\ManageCarController@louer')->name('louer_voiture');
 Route::get('/rendre_une_voiture','App\Http\Controllers\ManageCarController@rendre')->name('rendre');

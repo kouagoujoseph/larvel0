@@ -40,14 +40,66 @@
                 </form> 
                     @endcan
                     @cannot("admin")
-                    <button class="btn btn-danger" title="Supprimer">pas autorisé</button>
+                           <!-- Button trigger modal -->
+<!--Button Modal tiggrer-->
+<a href="#" class="btn btn-danger offset-5" type="button"  data-bs-toggle="modal" data-bs-target="#legalMentionsModal"><i class="bx bx-trash"></i></a> 
+                              
+<!-- Modal -->
+<div class="modal fade" id="legalMentionsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="legalMentionsModalLabel">Legal Notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-justify text-black">
+                <br><br>
+                Vous n'etes pas administrateur. Donc vous ne pouvez pas exécuter cette opération
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ok</button>
+            
+            </div>
+        </div>
+    </div>       
+ </div>
                     @endcannot
                     
                    
                 </td>
                 <td>
-                    <a href="{{ route('location.edit', $item) }}" class="btn btn-primary" title="Editer"> <i class=" bx
-                        bxs-edit-alt"></i></a>
+                     @can("admin")
+                     <a href="{{ route('location.edit', $item) }}" class="btn btn-primary" title="Editer"> <i class=" bx bxs-edit-alt"></i>
+                    </a> 
+                     @endcan
+                     @cannot("admin")
+                          <!-- Button trigger modal -->
+<!--Button Modal tiggrer-->
+<a href="#" class="btn btn-primary offset-5" type="button"  data-bs-toggle="modal" data-bs-target="#legalMentionsModal"><i class=" bx bxs-edit-alt"></i></a> 
+                              
+<!-- Modal -->
+<div class="modal fade" id="legalMentionsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="legalMentionsModalLabel">Legal Notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-justify text-black">
+                <br><br>
+                Vous n'etes pas administrateur. Donc vous ne pouvez pas exécuter cette opération
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ok</button>
+            
+            </div>
+        </div>
+    </div>       
+ </div>
+                     @endcannot
+                   
                 </td>
                 <td>
                     <a href="{{ route('location.show', $item) }}" title="show"> 
@@ -70,8 +122,36 @@
 
     </table>
     <br>
+    @can("admin")
     <a href="{{ route('location.create') }}" class="btn btn-primary waves-effect waves-light offset-5 text-white"> <i class="bx bx-add-to-queue"></i> Ajouter une nouvelle voiture
   </a>
+  @endcan
+  @cannot("admin")
+      <!-- Button trigger modal -->
+<!--Button Modal tiggrer-->
+<a href="#" class="btn btn-primary offset-5" type="button"  data-bs-toggle="modal" data-bs-target="#legalMentionsModal">Ajoute une voiture</a> 
+                              
+<!-- Modal -->
+<div class="modal fade" id="legalMentionsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="legalMentionsModalLabel">Legal Notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-justify text-success">
+                <br><br>
+                Vous n'etes pas administrateur. Donc vous ne pouvez pas exécuter cette opération
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ok</button>
+            
+            </div>
+        </div>
+    </div>       
+ </div>
+  @endcannot
   <br><br>
   <a href="/home_dashbord" class="col-2">
     <button class="btn btn-primary"><i class="bx bxs-left-arrow"></i> Page précédente</button>
