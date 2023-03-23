@@ -124,7 +124,7 @@ class ManageCarController extends Controller
     { 
         
         
-        
+    
             Voiture::destroy($id);
             return redirect()->back();
 

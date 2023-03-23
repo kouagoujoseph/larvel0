@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'Date_location',
+        'Fin_location',
+        'voiture_id',
+        'user_id',
+        'statut'
+    ];
     public function user(){
         return $this->belongsTo(User::class);
 

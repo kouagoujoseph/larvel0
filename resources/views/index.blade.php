@@ -8,7 +8,7 @@
         </div>
         <br>
         <div class="row">
-            {{-- 
+           
                  @if($infos->count()>0)
                 @foreach ($infos as $item)
                     <div class="col-xl-4 col-sm-6">
@@ -36,7 +36,19 @@
                                     </p>
                                     <form action="">
                                         <button class="btn btn-primary">voir detail</button>
-                                        <button class="btn btn-primary">louer-voiture</button>
+
+                            @if (Route::has('login'))
+                            @auth
+                            <form action="">
+                            <button class="btn btn-primary"> <a href="{{ route('locations.create',$item )}}">Louer</a></button>
+                           </form>
+                            @else
+                            <form action="{{ route('login') }}">
+                            <button class="btn btn-danger">Veillez-vous authentifier pour faire une location</button>
+                            </form>
+                            @endauth
+                         @endif
+
                                     </form>
 
                                 </div>
@@ -44,9 +56,20 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
-                 --}}
+            
 
+            @else
+           <br>            <br> 
+           <br> 
+           <br> 
+           <br> 
+           <br> 
+
+            <h2>Pas de voiture enregistré </h2>
+
+            @endif
+                
+{{--
             <div class="col-xl-4 col-sm-6">
                 <div class="card">
                     <div class="card-body">
@@ -112,7 +135,7 @@
                             @if (Route::has('login'))
                                 @auth
                                 <form action="">
-                                <button class="btn btn-primary">louer la voiture</button>
+                                <button class="btn btn-primary" onclick="{{ route('location.create' )}}">louer la voiture</button>
                                </form>
                                 @else
                                 <form action="{{ route('login') }}">
@@ -283,3 +306,4 @@
     </div>
 </div>
 @endsection
+--}}
