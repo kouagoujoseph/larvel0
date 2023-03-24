@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('Nom_voiture');
             $table->string('marque_voiture');
             $table->string('numero_matricule');
-            $table->binary('image')->nullable();
+            $table->string('image')->nullable();
+            #$table->binary('image')->nullable();
             $table->string('EstDisponible');
             $table->string('etat');
             $table->string('prix');  

@@ -20,7 +20,7 @@
                                             - 25 %
                                         </span>
                                     </div>
-                                    <img src="{{ $item->image }}" alt=""
+                                    <img src="{{ url('public/images/'.$item->image) }}" alt=""
                                         class="img-fluid mx-auto d-block">
                                 </div>
                                 <div class="mt-4 text-center">
@@ -40,7 +40,7 @@
                             @if (Route::has('login'))
                             @auth
                             <form action="">
-                            <button class="btn btn-primary"> <a href="{{ route('locations.create',$item )}}">Louer</a></button>
+                            <button class="btn btn-primary"> <a href="{{ route('locations.create',['voiture' => $item])}}">Louer</a></button>
                            </form>
                             @else
                             <form action="{{ route('login') }}">

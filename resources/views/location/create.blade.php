@@ -1,7 +1,7 @@
 @extends('layout_voiture.master')
 @section('content')
 
-<form action="{{ route('locations.store',$voiture)}}" method="POST" class="col-8 offset-2  bg-white"
+<form action="{{route('locations.store')}}" method="POST" class="col-8 offset-2  bg-white"
     enctype="multipart/form-data">
     <fieldset>
         <legend>

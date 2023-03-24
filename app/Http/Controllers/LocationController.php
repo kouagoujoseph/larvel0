@@ -26,12 +26,13 @@ class LocationController extends Controller
     public function create(Voiture $voiture)
     {
         print("VOiture==================".$voiture);
-        session()->put('voitures', $voiture);  //la voiture cliqué à la sesion afin de la recupérer
+        //session()->put('voiture', $voiture);  //la voiture cliqué à la sesion afin de la recupérer
+        session(['voiture' =>$voiture]); //via global session
 
+        //$request->session()->put('voiture',$voiture);//via request
         return view('location.create')
-        ->with('voiture', $voiture);
+       ->with('voiture', $voiture);
                                             
-
     }
 
     /**
@@ -40,7 +41,7 @@ class LocationController extends Controller
 
         public function cart()
         {
-            $locations = session()->get('locations', []);
+            $locations = $request->session()->get('locations');
 
         //Calculer le prix total de location 
         $somme_prix = 0;
@@ -72,29 +73,30 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Voiture $voiture)
+    public function store(Request $request)
     {
         $location = new Location();  
-        //$voiture_id = $request->input('voiture_id');  
-        //$voiture = Voiture::find($voiture_id); 
-            #$voiture = session()->get('voitures');
-        //Verifons si la voiture est libre
+        
         $message = "";
+
+        $voiture = $request->session()->get('voiture'); // get voiture from session
+        echo 'Voiture ..........................'.$voiture;
+        print($voiture);
 
         if ($voiture->EstDisponible == 'true')
         {
+            echo "oui";
             $location->Date_location = $request->input('Date_location');
             $location->Fin_location = $request->input('Fin_location');
             $location->voiture_id = $voiture->id;
-            #$location->user_id = $request->input('user_id');
             $location->user_id = auth()->user()->id;
             $location->statut = "EN COURS";
 
             $location->save();
-
-            $locations = session()->get('locations');
-            $locations[] = $location;
-            session()->put('locations', $locations);
+            
+            $locations = $request->session()->get('locations') ;
+            $locations.push($location);
+            $locations = $request->session()->put('locations') ;
 
          //changons la disponibilité de la voiture 
         $voiture->EstDisponible = 'false';
@@ -201,3 +203,20 @@ class LocationController extends Controller
 
     }
 }
+
+
+/*
+$todos = LeNomDeVotreTableEnBase::all();
+
+// Ou pour l’enregistrement avec l’identifiant « 42 »
+$todo = LeNomDeVotreTableEnBase::find(42);
+
+// Obtenir, mais filtrer et ordonné et avec une limite
+$todos = LeNomDeVotreTableEnBase::where('temine', 1)->orderBy('id', 'desc')->take(10)->get();
+
+// Ou avec un where
+$users = User::where('votes', '>', 100)->get();
+
+
+https://cours.brosseau.ovh/cheatsheets/laravel/
+ */

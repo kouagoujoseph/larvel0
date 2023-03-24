@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Date_location');
             $table->string('Fin_location');
-            $table->string('statut')->default('EN ATTENTE');
+            $table->enum('statut', ['EN ATTENTE', 'EN COURS', 'TERMINÉ'])->default('EN ATTENTE');
             $table->foreignId('voiture_id');
             $table->foreignId('user_id');
             $table->timestamps();
