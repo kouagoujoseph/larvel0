@@ -38,18 +38,26 @@ class ManageCarController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        
+        {
 
-               // $image = $request->file('image')->get();
-               // $imagePath = $request->file('image')->store('public/images');
-               // $imageName = basename($imagePath);
-                $model = new Voiture();
-              //  $model->image = $image;
-                $image = $request->file('image');
-                $path = Storage::disk('public')->put('images', $image);
-                $model->image = $image->getClientOriginalName();
-                $model->image = $path;
+            $model = new Voiture();
+
+            $image = "";
+            if($request->file('image'))
+            {
+                $file= $request->file('image');
+
+                $image= date('YmdHi').$file->getClientOriginalName();
+                
+                $file-> move(public_path('public/images'), $image);
+
+            }
+
+           
+                //$image = $request->file('image');
+                //$path = Storage::disk('public')->put('images', $image);
+               // $model->image = $image->getClientOriginalName();
+                $model->image = $image;
                 $model->Nom_voiture = $request->Nom_voiture ;
                 $model->marque_voiture = $request->marque_voiture;
                 $model->numero_matricule = $request->numero_matricule;
@@ -124,7 +132,7 @@ class ManageCarController extends Controller
     { 
         
         
-        
+    
             Voiture::destroy($id);
             return redirect()->back();
 
